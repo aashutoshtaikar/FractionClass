@@ -1,0 +1,1 @@
+/usr/bin/g++    -rdynamic CMakeFiles/FractionClass.dir/src/fraction.cpp.o CMakeFiles/FractionClass.dir/src/main.cpp.o  -o FractionClass 
