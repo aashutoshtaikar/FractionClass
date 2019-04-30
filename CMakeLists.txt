@@ -12,4 +12,6 @@ file(GLOB src_files
 
 add_executable(${PROJECT_NAME} ${src_files} )
 
+install(TARGETS FractionClass DESTINATION FractionClass/bin)
+
 #target_link_libraries (${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})

@@ -10,10 +10,6 @@ typedef fraction fr;
 class test_fractions{
 public:
     static void addition(){
-        // (1/(2+(4)) / (9/8)
-        // x (y/z)
-        // to decimal
-        //
         fr r = (2/2);
         fr x = 1.0l + fr(-1,2) + fr(1,2);
         fr a(2,2);
