@@ -1,11 +1,12 @@
 #include "fraction.h"
 
+/////////////////
+//Constructors//
+///////////////
 fraction::fraction()noexcept:nr(0),dr(1.0l){}
-
 
 fraction::fraction(long double n,long double d) 
 {
-
     while(fmod(n,10)!=0 && fmod(d,10)!=0){
         n *= 10;
         d *= 10;
@@ -229,8 +230,6 @@ long double fraction::gcd(const long double& x,const long double& y)
 //    for (auto i : fracs) {
 //        denoms.push_back(i.get_dr());
 //    }
-
-
 //}
 
 fraction fraction::get_simplify() const
@@ -245,8 +244,7 @@ fraction fraction::get_simplify() const
 }
 
 
-const fraction& fraction::simplify()
-{
+const fraction& fraction::simplify(){
     *this = get_simplify();
     return *this;
 }

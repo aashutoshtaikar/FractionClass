@@ -1,7 +1,7 @@
-#include<iostream>
-#include <stdexcept>
-#include <cmath>
-#include <vector>
+#include<iostream>		// ostream operator<< overload
+#include <stdexcept>	//std::invalid_argument()
+#include <cmath>		// fmod()
+#include <vector> 
 
 class fraction
 {
