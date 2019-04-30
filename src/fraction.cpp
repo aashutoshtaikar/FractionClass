@@ -2,10 +2,6 @@
 
 fraction::fraction()noexcept:nr(0),dr(1.0l){}
 
-fraction::fraction(long double n)
-{
-    *this = fraction(n,1).get_simplify();
-}
 
 fraction::fraction(long double n,long double d) 
 {

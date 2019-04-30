@@ -14,8 +14,13 @@ private:
 
 public:
     fraction()noexcept;
-    fraction(long double n);
-    fraction(long double n,long double d);
+	
+	template <class number_t>
+	fraction(const number_t& n){
+		*this = fraction(n, 1).get_simplify();
+	}
+    
+	fraction(long double n,long double d);
 
     //binary operators
     fraction operator+(const fraction& other)const;

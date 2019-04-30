@@ -68,7 +68,7 @@ public:
         fr x(1.5,3);
         cout << x << "\n";
         cout << (double)x << "\n";
-        fr y((double)x);
+        fr y(x);
         cout << y << "\n";
         cout << y.simplify() << " \n";
     }
@@ -84,7 +84,8 @@ public:
 
 	static void shorthand_and_unary() {
 		fr y(1, 2);
-		y += y++;
+		y = y++;
+		fr x = 1.1;
 		cout << y << "\n";
 	}
 };
