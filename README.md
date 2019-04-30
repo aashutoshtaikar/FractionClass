@@ -6,7 +6,7 @@ File > Open > CMake > (browse to the dir and select CMakeLists.txt file)
 
 ### Building on Linux (cmake minimum v2.8 and gcc/clang)    
 Navigate to the cloned repository directory  
-mkdir build && cd build && cmake ../ && make  
+rm -rfd build && mkdir build && cd build && cmake ../ && make  
 
 ### Overview  
 1. Accepts a long double
