@@ -206,21 +206,11 @@ void fraction::set_dr(const long double& d)
 //functions//
 ////////////
 fraction fraction::get_reciprocal()const{
-    try {
-        return (fraction(dr,nr));
-    } catch (std::invalid_argument& e) {
-        std::cerr << e.what() << "\n";
-        return fraction(0,1);
-    }
+	return (fraction(dr, nr));
 }
 
 void fraction::reciprocal(){
-    try {
-        *this = get_reciprocal();
-    } catch (std::invalid_argument& e) {
-        std::cerr << e.what() << "\n";
-        *this = fraction(0,1);
-    }
+	*this = get_reciprocal();
 }
 
 long double fraction::gcd(const long double& x,const long double& y)
