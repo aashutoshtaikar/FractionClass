@@ -1,7 +1,8 @@
 #include "fraction.h"
-
-fraction::fraction()noexcept:nr(0),dr(1.0l){}
-
+/////////////////
+//Constructors//
+///////////////
+fraction::fraction()noexcept:nr(0),dr(1ll){}
 
 fraction::fraction(double n, double d) 
 {
@@ -234,7 +235,7 @@ long long fraction::gcd(const long long& x,const long long& y)
 
 fraction fraction::get_simplify() const
 {
-    if(nr!=0.0l){
+    if(nr!=0ll){
         long long divisor = gcd(nr,dr);
         long long num = nr/divisor;
         long long denom = dr/divisor;
@@ -255,7 +256,7 @@ const fraction& fraction::simplify()
 ////////////////////////////
 std::ostream& operator<<(std::ostream &out, const fraction &frac)
 {
-    if(frac.get_dr()==1.0l || frac.get_nr()==0.0l){
+    if(frac.get_dr()==1ll || frac.get_nr()==0ll){
         out << frac.get_nr();
     }
     else{
