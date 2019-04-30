@@ -174,10 +174,6 @@ void fraction::set_dr(const long double& d)
     }
 }
 
-fraction::~fraction()
-{
-	std::cout << *this << " destroyed \n";
-}
 
 //////////////
 //functions//
@@ -256,34 +252,7 @@ std::ostream& operator<<(std::ostream &out, const fraction &f)
     return out;
 }
 
-fraction operator+(const long double& number, const fraction &frac){
-    return fraction(number) + frac;
-}
 
-fraction operator+(const fraction &frac, const long double& number){
-    return  fraction(number,1) + frac;
-}
 
-fraction operator-(const long double& number, const fraction &frac){
-    return  fraction(number,1) - frac;
-}
 
-fraction operator-(const fraction &frac, const long double& number){
-    return frac - fraction(number,1);
-}
 
-fraction operator*(const long double& number, const fraction &frac){
-    return fraction(number,1) * frac;
-}
-
-fraction operator*(const fraction &frac, const long double& number){
-    return fraction(number,1) * frac;
-}
-
-fraction operator/(const long double& number, const fraction &frac){
-    return fraction(number,1) / frac;
-}
-
-fraction operator/(const fraction &frac, const long double& number){
-     return frac / fraction(number,1);
-}

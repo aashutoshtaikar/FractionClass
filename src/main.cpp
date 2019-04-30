@@ -1,23 +1,23 @@
 #include <iostream>
-#include <sstream>
-#include <math.h>
-#include <assert.h>
-#include <limits>
 #include "fraction.h"
-using namespace std;
-typedef fraction fr;
 
-class dummy :public fraction {
+using namespace std;
+using fr = fraction;
+
+class Matrix final:public fr{
 public:
-	dummy() :fraction() {}
-	dummy(long double n, long double d) :fraction(n, d) {}
+	Matrix() :fraction() {}
+	Matrix(long double n, long double d) :fraction(n, d) {}
+	~Matrix() {
+		std::cout << *this << " dummy destroyed \n";
+	}
 };
 
 class test_fractions{
 public:
     static void addition(){
         fr r = (2/2);
-        fr x = 1.0l + fr(-1,2) + fr(1,2);
+        fr x = 1 + fr(-1,2) + fr(1,2);
         fr a(2,2);
 
         try {
@@ -27,7 +27,7 @@ public:
             cerr << e.what() << "caught\n";
         }
 
-        cout << a << "\n";
+        cout << x << "\n";
 
     }
 
@@ -47,10 +47,12 @@ public:
     }
 
     static void the_big_five(){
-		/*fr x(fr(1,0.1));
-		fr y = x;
+		/*fr x(fr(1,0.1)); //copy ctor
+		fr y = x; //copy assignment
+		fr a = std::move(y); // move ctor
+		fr a = std::move(y); // move assignment
 */
-		std::unique_ptr<fr> z = make_unique<dummy>(dummy(1, 2));
+		std::unique_ptr<fr> z = make_unique<Matrix>(Matrix(1, 2));
         cout << *z << "\n";
     }
 
@@ -88,11 +90,11 @@ public:
 
 int main() {
 
-    //test_fractions::addition();
+    test_fractions::addition();
 //       test_fractions::subtraction();
 //     test_fractions::multiplication();
 //     test_fractions::division();
-     test_fractions::the_big_five();
+     //test_fractions::the_big_five();
 //    test_fractions::copy_assignment();
 //    test_fractions::misc();
 //       test_fractions::gcd();

@@ -63,20 +63,49 @@ public:
     fraction& operator=(const fraction& other) = default;
     fraction(fraction&& other) = default;
     fraction& operator=(fraction&& other) = default;
-    virtual ~fraction();
+    virtual ~fraction() = default;
 };
 
 std::ostream& operator<<(std::ostream &out, const fraction &frac);
 
-fraction operator+(const long double& number, const fraction& frac);
-fraction operator+(const fraction& frac,const long double& number);
 
-fraction operator-(const long double& number, const fraction& frac);
-fraction operator-(const fraction& frac,const long double& number);
+template<class num_t>
+fraction operator+(const num_t& number, const fraction& frac) {
+		return fraction(number, 1) + frac;
+}
 
-fraction operator*(const long double& number, const fraction& frac);
-fraction operator*(const fraction& frac,const long double& number);
+template<class num_t>
+fraction operator+(const fraction& frac, const num_t& number) {
+		return fraction(number, 1) + frac;
+}
 
-fraction operator/(const long double& number, const fraction& frac);
-fraction operator/(const fraction& frac,const long double& number);
+template<class num_t>
+fraction operator-(const num_t& number, const fraction &frac) {
+	return  fraction(number, 1) - frac;
+}
+
+template<class num_t>
+fraction operator-(const fraction &frac, const num_t& number) {
+	return frac - fraction(number, 1);
+}
+
+template<class num_t>
+fraction operator*(const num_t& number, const fraction &frac) {
+	return fraction(number, 1) * frac;
+}
+
+template<class num_t>
+fraction operator*(const fraction &frac, const num_t& number) {
+	return fraction(number, 1) * frac;
+}
+
+template<class num_t>
+fraction operator/(const num_t& number, const fraction &frac) {
+	return fraction(number, 1) / frac;
+}
+
+template<class num_t>
+fraction operator/(const fraction &frac, const num_t& number) {
+	return frac / fraction(number, 1);
+}
 
