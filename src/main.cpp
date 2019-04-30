@@ -14,8 +14,8 @@ public:
         // x (y/z)
         // to decimal
         //
-        fr r = 0;
-        fr x = 1 + fr(-1,2) + fr(1,2);
+        fr r = (2/2);
+        fr x = 1.0l + fr(-1,2) + fr(1,2);
         fr a(2,2);
 
         try {
@@ -25,7 +25,7 @@ public:
             cerr << e.what() << "caught\n";
         }
 
-        cout << x << "\n";
+        cout << a << "\n";
 
     }
 
@@ -91,6 +91,6 @@ int main() {
 //    test_fractions::copy_assignment();
 //    test_fractions::misc();
 //       test_fractions::gcd();
-
+	std::cin.get();
     return 0;
 }
