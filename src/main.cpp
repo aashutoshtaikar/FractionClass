@@ -1,4 +1,5 @@
 #include <iostream>
+#include <assert.h>
 #include "fraction.h"
 
 using namespace std;
@@ -7,19 +8,18 @@ using fr = fraction;
 class Matrix final:public fr{
 public:
 	Matrix() :fraction() {}
+	Matrix(long double n) :fraction(n) {}
 	Matrix(long double n, long double d) :fraction(n, d) {}
 	~Matrix() {
-		std::cout << *this << " dummy destroyed \n";
+		std::cout << *this << " matrix destroyed \n";
 	}
 };
 
-class test_fractions{
+class test_frac{
 public:
     static void addition(){
-        fr r = (2/2);
-        fr x = 1 + fr(-1,2) + fr(1,2);
-        fr a(2,2);
-
+		fr x = 'a' + fr(-1, 2) + fr(1, 2) + 1;
+		fr a(2, 2);
         try {
             a /= fr(0,1);
             a.simplify();
@@ -27,39 +27,35 @@ public:
             cerr << e.what() << "caught\n";
         }
 
-        cout << x << "\n";
+        cout << a.simplify() << "\n";
 
     }
 
     static void subtraction(){
-        fr x = fr(1,2) - fr(1,2);
+        fr x = 0 - fr(1,2);
         cout << x << "\n";
     }
 
     static void multiplication(){
-        fr x = fr{1,2} * fr{1,2};
+        fr x = -0.1 * fr{1,2};
         cout << x << "\n";
     }
 
     static void division(){
-        fr x = fr{1,2} / fr{1,2};
+        fr x = fr(1,2) / 0;
         cout << x << "\n";
     }
 
     static void the_big_five(){
-		/*fr x(fr(1,0.1)); //copy ctor
-		fr y = x; //copy assignment
-		fr a = std::move(y); // move ctor
-		fr a = std::move(y); // move assignment
-*/
+		//fr x(fr(1,0.1)); //copy ctor
+		//fr y = x; //copy assignment
+		//fr a = std::move(y); // move ctor
+		//a = std::move(y); // move assignment
+
 		std::unique_ptr<fr> z = make_unique<Matrix>(Matrix(1, 2));
         cout << *z << "\n";
     }
 
-    static void simplify(){
-        fr x = fr{8,12};
-        cout << x << "\n";
-    }
 
     static void copy_assignment(){
         fr x = fr{8,12};
@@ -85,19 +81,29 @@ public:
     static void ast(){
 //        fr x = "1/2+1/2*1/2";
     }
+
+	static void shorthand_and_unary() {
+		fr y(1, 2);
+		y += y++;
+		cout << y << "\n";
+	}
 };
 
 
-int main() {
 
-    test_fractions::addition();
-//       test_fractions::subtraction();
-//     test_fractions::multiplication();
-//     test_fractions::division();
-     //test_fractions::the_big_five();
-//    test_fractions::copy_assignment();
-//    test_fractions::misc();
-//       test_fractions::gcd();
+
+int main() {
+	//cout << (fr(999.234, 5656.123) > fr(999.234, 5656.123));
+	//test_frac::addition();
+	//test_frac::subtraction();
+	//test_frac::multiplication();
+	//test_frac::division();
+	//test_frac::the_big_five();
+	//test_frac::copy_assignment();
+	//test_frac::misc();
+	//test_frac::gcd();
+	test_frac::shorthand_and_unary();
+
 	std::cin.get();
     return 0;
 }

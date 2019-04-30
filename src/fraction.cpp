@@ -7,7 +7,7 @@ fraction::fraction(long double n)
     *this = fraction(n,1).get_simplify();
 }
 
-fraction::fraction(long double n,long double d)
+fraction::fraction(long double n,long double d) 
 {
 
     while(fmod(n,10)!=0 && fmod(d,10)!=0){
@@ -29,9 +29,10 @@ fraction::fraction(long double n,long double d)
         sign *= -1;
         n *= -1;
     }
+   
+	set_dr(d);
+	set_nr(n*sign);
 
-    set_dr(d);
-    set_nr(n*sign);
 }
 
 ////////////////////////////////
@@ -79,6 +80,32 @@ fraction fraction::operator*(const fraction &other) const{
     return temp;
 }
 
+fraction& fraction::operator++()
+{
+	*this += 1;
+	return *this;
+}
+
+fraction fraction::operator++(int)
+{
+	fraction temp = *this;
+	*this += 1;
+	return temp;
+}
+
+fraction& fraction::operator--()
+{
+	*this -= 1;
+	return *this;
+}
+
+fraction fraction::operator--(int)
+{
+	fraction temp = *this;
+	*this -= 1;
+	return temp;
+}
+
 ///////////////////////////////////////////
 //fraction operator assignment overloads//
 /////////////////////////////////////////
@@ -88,7 +115,7 @@ fraction& fraction::operator+=(const fraction &other){
 }
 
 fraction& fraction::operator-=(const fraction &other){
-    *this = *this- other;
+    *this = *this - other;
     return *this;
 }
 
@@ -241,13 +268,13 @@ const fraction& fraction::simplify()
 //////////////////////////////
 //global operator overloads//
 ////////////////////////////
-std::ostream& operator<<(std::ostream &out, const fraction &f)
+std::ostream& operator<<(std::ostream &out, const fraction &frac)
 {
-    if(f.get_dr()==1.0l || f.get_nr()==0.0l){
-        out << f.get_nr();
+    if(frac.get_dr()==1.0l || frac.get_nr()==0.0l){
+        out << frac.get_nr();
     }
     else{
-        out << f.get_nr() <<"/"<< f.get_dr();
+        out << frac.get_nr() <<"/"<< frac.get_dr();
     }
     return out;
 }
