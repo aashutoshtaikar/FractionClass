@@ -1,7 +1,7 @@
 # A Fraction class  
 
 ### To Run on Windows (cmake minimum v2.8 and VC++/minGW)   
-Open Visual Studio    
+Open Visual Studio 2017    
 File > Open > CMake > (browse to the dir and select CMakeLists.txt file)    
 
 ### Building on Linux (cmake minimum v2.8 and gcc/clang)    
