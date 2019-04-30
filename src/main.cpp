@@ -7,6 +7,12 @@
 using namespace std;
 typedef fraction fr;
 
+class dummy :public fraction {
+public:
+	dummy() :fraction() {}
+	dummy(long double n, long double d) :fraction(n, d) {}
+};
+
 class test_fractions{
 public:
     static void addition(){
@@ -40,9 +46,12 @@ public:
         cout << x << "\n";
     }
 
-    static void copy_ctor(){
-        fr x(fr(1,0.1));
-        cout << x << "\n";
+    static void the_big_five(){
+		/*fr x(fr(1,0.1));
+		fr y = x;
+*/
+		std::unique_ptr<fr> z = make_unique<dummy>(dummy(1, 2));
+        cout << *z << "\n";
     }
 
     static void simplify(){
@@ -79,11 +88,11 @@ public:
 
 int main() {
 
-    test_fractions::addition();
+    //test_fractions::addition();
 //       test_fractions::subtraction();
 //     test_fractions::multiplication();
 //     test_fractions::division();
-//     test_fractions::copy_ctor();
+     test_fractions::the_big_five();
 //    test_fractions::copy_assignment();
 //    test_fractions::misc();
 //       test_fractions::gcd();

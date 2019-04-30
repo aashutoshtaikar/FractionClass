@@ -174,6 +174,11 @@ void fraction::set_dr(const long double& d)
     }
 }
 
+fraction::~fraction()
+{
+	std::cout << *this << " destroyed \n";
+}
+
 //////////////
 //functions//
 ////////////

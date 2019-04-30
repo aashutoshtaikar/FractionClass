@@ -63,7 +63,7 @@ public:
     fraction& operator=(const fraction& other) = default;
     fraction(fraction&& other) = default;
     fraction& operator=(fraction&& other) = default;
-    virtual ~fraction() = default;
+    virtual ~fraction();
 };
 
 std::ostream& operator<<(std::ostream &out, const fraction &frac);
