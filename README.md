@@ -1,10 +1,11 @@
 # A Fraction class  
 
-### Building on Windows (cmake minimum v2.8 and VC++/minGW)   
+### To Run on Windows (cmake minimum v2.8 and VC++/minGW)   
 Open Visual Studio    
 File > Open > CMake > (browse to the dir and select CMakeLists.txt file)    
 
 ### Building on Linux (cmake minimum v2.8 and gcc/clang)    
+Navigate to the cloned repository directory  
 mkdir build && cd build && cmake ../ && make  
 
 ### Overview  
