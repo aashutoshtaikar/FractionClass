@@ -8,8 +8,8 @@ using fr = fraction;
 class Matrix final:public fr{
 public:
 	Matrix() :fraction() {}
-	Matrix(long double n) :fraction(n) {}
-	Matrix(long double n, long double d) :fraction(n, d) {}
+	Matrix( double n) :fraction(n) {}
+	Matrix( double n,  double d) :fraction(n, d) {}
 	~Matrix() {
 		std::cout << *this << " matrix destroyed \n";
 	}
@@ -20,7 +20,8 @@ public:
     static void addition(){
 		fr x = 'a' + fr(-1, 2) + fr(1, 2) + 1;
 		fr a(2, 2);
-        try {
+        
+		try {
             a /= fr(0,1);
             a.simplify();
         } catch (std::exception& e) {
@@ -83,9 +84,9 @@ public:
     }
 
 	static void shorthand_and_unary() {
-		fr y(1, 2);
-		y += y++;
-		cout << y << "\n";
+		fr y(1.2, 3.44);
+		fr x = y++;
+		cout << x << "\n";
 	}
 };
 
@@ -103,6 +104,7 @@ int main() {
 	//test_frac::misc();
 	//test_frac::gcd();
 	test_frac::shorthand_and_unary();
+
 
 	std::cin.get();
     return 0;

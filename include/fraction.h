@@ -6,16 +6,21 @@
 class fraction
 {
 private:
-	long double nr;
-	long double dr;
+	long long nr;
+	long long dr;
 
 //    fraction nf;
 //    fraction df;
 
 public:
     fraction()noexcept;
-    fraction(long double n);
-    fraction(long double n,long double d);
+    
+	template <class number_t>
+	fraction(const number_t& n) {
+		*this = fraction(n, 1).get_simplify();
+	}
+
+    fraction( double n, double d);
 
     //binary operators
     fraction operator+(const fraction& other)const;
@@ -51,18 +56,18 @@ public:
     //functions
     fraction get_reciprocal()const;
     void reciprocal();
-    static long double gcd(const long double& x,const long double& y);
+	static long long gcd(const long long&x, const long long& y);
 
-//    static long double lcm(std::initializer_list<fraction> fracs);
+//    static  double lcm(std::initializer_list<fraction> fracs);
     fraction get_simplify()const;
     const fraction& simplify();
 
 
     //public accessors
-    long double get_nr()const;
-    long double get_dr()const;
-    void set_nr(const long double& n);
-    void set_dr(const long double& d);
+    long long get_nr()const;
+    long long get_dr()const;
+    void set_nr(const long long& n);
+    void set_dr(const long long& d);
 
     ////defaults for the big 5
     fraction(const fraction& other) = default;

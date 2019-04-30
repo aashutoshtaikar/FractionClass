@@ -2,14 +2,9 @@
 
 fraction::fraction()noexcept:nr(0),dr(1.0l){}
 
-fraction::fraction(long double n)
-{
-    *this = fraction(n,1).get_simplify();
-}
 
-fraction::fraction(long double n,long double d) 
+fraction::fraction(double n, double d) 
 {
-
     while(fmod(n,10)!=0 && fmod(d,10)!=0){
         n *= 10;
         d *= 10;
@@ -179,21 +174,21 @@ fraction::operator int(){
 /////////////////////
 //public accessors//
 ///////////////////
-long double fraction::get_nr() const{
+long long fraction::get_nr() const{
     return nr;
 }
 
-long double fraction::get_dr() const{
+long long fraction::get_dr() const{
     return dr;
 }
 
-void fraction::set_nr(const long double& n)
+void fraction::set_nr(const long long& n)
 {
    nr = n;
    if(nr==0) set_dr(1);
 }
 
-void fraction::set_dr(const long double& d)
+void fraction::set_dr(const long long& d)
 {
     if(d!=0) dr = d;
     else{
@@ -213,11 +208,11 @@ void fraction::reciprocal(){
 	*this = get_reciprocal();
 }
 
-long double fraction::gcd(const long double& x,const long double& y)
+long long fraction::gcd(const long long& x,const long long& y)
 {
-    long double divisor = x<y?x:y;
-    long double divident = x>y?x:y;
-    long double remainder = 1; //dummy remainder
+    long long divisor = x<y?x:y;
+    long long divident = x>y?x:y;
+    long long remainder = 1; //dummy remainder
 
     while(remainder){
         remainder = fmod(divident,divisor);
@@ -227,9 +222,9 @@ long double fraction::gcd(const long double& x,const long double& y)
     return divisor;
 }
 
-//long double fraction::lcm(std::initializer_list<fraction> fracs)
+//long long fraction::lcm(std::initializer_list<fraction> fracs)
 //{
-//    std::vector<long double> denoms;
+//    std::vector<long long> denoms;
 //    for (auto i : fracs) {
 //        denoms.push_back(i.get_dr());
 //    }
@@ -240,9 +235,9 @@ long double fraction::gcd(const long double& x,const long double& y)
 fraction fraction::get_simplify() const
 {
     if(nr!=0.0l){
-        long double divisor = gcd(nr,dr);
-        long double num = nr/divisor;
-        long double denom = dr/divisor;
+        long long divisor = gcd(nr,dr);
+        long long num = nr/divisor;
+        long long denom = dr/divisor;
         return fraction(num,denom);
     }
     return fraction(0,1);
