@@ -8,7 +8,10 @@ using fr = fraction;
 class Matrix final:public fr{
 public:
 	Matrix() :fraction() {}
-	Matrix( double n) :fraction(n) {}
+	
+	template <class T>
+	Matrix(const T& n) :fraction(n) {}
+	
 	Matrix( double n,  double d) :fraction(n, d) {}
 	~Matrix() {
 		std::cout << *this << " matrix destroyed \n";
