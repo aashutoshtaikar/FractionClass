@@ -2,6 +2,8 @@
 #include <stdexcept>
 #include <cmath>
 #include <vector>
+#include <map>
+#include <algorithm>	
 
 class fraction
 {
@@ -58,10 +60,10 @@ public:
     void reciprocal();
 	static long long gcd(const long long&x, const long long& y);
 
-//    static  double lcm(std::initializer_list<fraction> fracs);
+	static std::vector<long long> get_prime_factors(long long n);
+	static std::vector<long long> lcm(std::initializer_list<fraction> fracs);
     fraction get_simplify()const;
     const fraction& simplify();
-
 
     //public accessors
     long long get_nr()const;

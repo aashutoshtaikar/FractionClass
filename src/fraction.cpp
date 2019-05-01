@@ -223,15 +223,62 @@ long long fraction::gcd(const long long& x,const long long& y)
     return divisor;
 }
 
-//long long fraction::lcm(std::initializer_list<fraction> fracs)
-//{
-//    std::vector<long long> denoms;
-//    for (auto i : fracs) {
-//        denoms.push_back(i.get_dr());
-//    }
+std::vector<long long> fraction::get_prime_factors(long long n)
+{
+	std::vector<long long> prime_factors;
+	
+	//for no of 2s that divide n
+	while (n % 2 == 0) {
+		prime_factors.push_back(n);
+		n = n / 2;
+	}
 
+	//for all odd prime factors
+	for (long long i = 0; i < sqrt(n); i = i+2)
+	{
+		while (n % i == 0) {
+			prime_factors.push_back(i);
+			n = n / i;
+		}
+	}
 
-//}
+	//if n is a prime no. greater than 2
+	if (n > 2) {
+		prime_factors.push_back(n);
+	}
+
+	return prime_factors;
+}
+
+std::vector<long long> fraction::lcm(std::initializer_list<fraction> fracs)
+{
+    std::vector<long long> denominators;
+    for (auto fr : fracs) {
+		denominators.push_back(fr.get_dr());
+    }
+
+	std::map<long long, std::vector<int>> primefac_count;
+	for (int i=0;i<denominators.size();i++)
+	{
+		std::vector<long long> prime_factors = get_prime_factors(denominators[i]);
+	
+		for (const auto& factor : prime_factors) {
+			primefac_count[factor].insert[i]++;
+		}
+	}
+
+	std::vector<long long> lcm;
+	for (const auto& primefac : primefac_count )
+	{
+		auto it = std::max_element(primefac.second.begin(), primefac.second.end());
+		for (int i = 0; i <*it ; i++)
+		{
+			lcm.push_back(primefac.first);
+		}
+	}
+
+	return lcm;
+}
 
 fraction fraction::get_simplify() const
 {

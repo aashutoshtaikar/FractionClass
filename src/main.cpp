@@ -91,6 +91,16 @@ public:
 		fr x = y++;
 		cout << x << "\n";
 	}
+
+	static void lcm_test() {
+		fr a(1, 148), b(1, 139), c(1, 20), d(1, 45);
+		vector<long long> temp = fr::lcm({ a,b,c,d });
+
+		for (auto i : temp) {
+			cout << i << " ";
+		}
+		cout << "\n";
+	}
 };
 
 
@@ -106,7 +116,8 @@ int main() {
 	//test_frac::copy_assignment();
 	//test_frac::misc();
 	//test_frac::gcd();
-	test_frac::shorthand_and_unary();
+	//test_frac::shorthand_and_unary();
+	test_frac::lcm_test();
 
 
 	std::cin.get();
