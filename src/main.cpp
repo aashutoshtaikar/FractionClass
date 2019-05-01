@@ -2,6 +2,7 @@
 #include "fraction.h"
 
 using namespace std;
+using namespace math_custom;
 using fr = fraction;
 
 class Matrix final:public fr{
@@ -16,10 +17,13 @@ public:
 	}
 };
 
+
+
 class test_frac{
 public:
     static void addition(){
-		fr x = 'a' + fr(-1, 2) + fr(1, 2) + 1;
+
+		fr x = 1.0l + fr(1,2) ;
 		fr a(2, 2);
         try {
             a /= fr(0,1);
@@ -94,9 +98,11 @@ public:
 
 
 
+
+
 int main() {
 	//cout << (fr(999.234, 5656.123) > fr(999.234, 5656.123));
-	//test_frac::addition();
+	test_frac::addition();
 	//test_frac::subtraction();
 	//test_frac::multiplication();
 	//test_frac::division();
@@ -104,8 +110,10 @@ int main() {
 	//test_frac::copy_assignment();
 	//test_frac::misc();
 	//test_frac::gcd();
-	test_frac::shorthand_and_unary();
+	//test_frac::shorthand_and_unary();
+	
 
+	
 	std::cin.get();
     return 0;
 }
