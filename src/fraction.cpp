@@ -229,12 +229,12 @@ std::vector<long long> fraction::get_prime_factors(long long n)
 	
 	//for no of 2s that divide n
 	while (n % 2 == 0) {
-		prime_factors.push_back(n);
+		prime_factors.push_back(2);
 		n = n / 2;
 	}
 
 	//for all odd prime factors
-	for (long long i = 0; i < sqrt(n); i = i+2)
+	for (long long i = 3; i <= sqrt(n); i = i+2)
 	{
 		while (n % i == 0) {
 			prime_factors.push_back(i);
@@ -258,20 +258,28 @@ std::vector<long long> fraction::lcm(std::initializer_list<fraction> fracs)
     }
 
 	std::map<long long, std::vector<int>> primefac_count;
-	for (int i=0;i<denominators.size();i++)
+	
+
+	for (int i=0 ;i<denominators.size();i++)
 	{
 		std::vector<long long> prime_factors = get_prime_factors(denominators[i]);
 	
+		std::vector<long long> temp;
+		temp.push_back(0ll);
 		for (const auto& factor : prime_factors) {
-			primefac_count[factor].insert[i]++;
+			std::cout << i << " "<<temp[i] << "\n";
+			primefac_count.insert(std::make_pair(factor,++temp[i]));
 		}
 	}
 
 	std::vector<long long> lcm;
 	for (const auto& primefac : primefac_count )
 	{
-		auto it = std::max_element(primefac.second.begin(), primefac.second.end());
-		for (int i = 0; i <*it ; i++)
+		std::vector<int> temp = primefac.second;
+		std::sort(temp.begin(), temp.end(), [](int i, int j) { return i > j; });
+
+		int it = temp[0];
+		for (int i = 0; i <it ; i++)
 		{
 			lcm.push_back(primefac.first);
 		}
