@@ -11,6 +11,7 @@ file(GLOB src_files
     "src/*.cpp"
 )
 
+# source files
 add_executable(${PROJECT_NAME} ${src_files} )
 
 #path for generated executables

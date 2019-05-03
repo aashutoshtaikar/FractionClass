@@ -2,7 +2,12 @@
 
 ### To Run on Windows (cmake minimum v2.8 and VC++/minGW)   
 Open Visual Studio 2017    
-File > Open > CMake > (browse to the dir and select CMakeLists.txt file)    
+File > Open > CMake > (browse to the dir and select CMakeLists.txt file)  
+To build:  
+Configurations(toolbar x64-Debug) > Manage Configurations > generates CMakeSettings.json  
+https://docs.microsoft.com/en-us/cpp/build/customize-cmake-settings?view=vs-2019  
+OR   
+Copy CMakeSettings if you wish to keep everything organized under one folder bin/    
 
 ### Building on Linux (cmake minimum v2.8 and gcc/clang)    
 Navigate to the cloned repository directory  
