@@ -1,0 +1,27 @@
+{
+  "configurations": [
+    {
+      "name": "x64-Debug",
+      "buildCommandArgs": "-v",
+      "buildRoot": "${workspaceRoot}\\bin\\intermediates\\${name}",
+      "installRoot": "${workspaceRoot}\\bin\\${name}",
+      "cmakeCommandArgs": "",
+      "configurationType": "Debug",
+      "ctestCommandArgs": "",
+      "generator": "Ninja",
+      "inheritEnvironments": [ "msvc_x64_x64" ]
+    },
+
+    {
+      "name": "x86-Debug",
+      "buildCommandArgs": "-v",
+      "buildRoot": "${workspaceRoot}\\bin\\intermediates\\${name}",
+      "installRoot": "${workspaceRoot}\\bin\\${name}",
+      "cmakeCommandArgs": "",
+      "configurationType": "Debug",
+      "ctestCommandArgs": "",
+      "generator": "Ninja",
+      "inheritEnvironments": [ "msvc_x86_x64" ]
+    }
+  ]
+}

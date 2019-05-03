@@ -232,7 +232,7 @@ namespace math_custom {
 
 	fraction fraction::get_simplify() const
 	{
-		if (nr != 0.0l) {
+		if (nr != 0) {
 			long double divisor = gcd(nr, dr);
 			long double num = nr / divisor;
 			long double denom = dr / divisor;

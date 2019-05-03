@@ -24,7 +24,9 @@ class test_frac{
 public:
     static void addition(){
 
-		fr x = 'a' + fr(1,2);
+		fr x(1,2);
+		x.set_denominator(3);
+		x.set_numerator(-5);
 		//fr a(2, 2);
   //      try {
   //          a /= fr(0,1);

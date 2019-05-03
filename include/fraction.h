@@ -17,7 +17,7 @@ namespace math_custom {
 		//    fraction df;
 
 	public:
-		fraction();
+		fraction()noexcept;
 
 		template <class number_t>
 		fraction(const number_t& n) {
