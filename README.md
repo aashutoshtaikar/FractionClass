@@ -1,13 +1,14 @@
 # A Fraction class  
 
-### To Run on Windows (cmake minimum v2.8 and VC++/minGW)   
-Open Visual Studio 2017    
-File > Open > CMake > (browse to the dir and select CMakeLists.txt file)  
-To build:  
-Configurations(toolbar x64-Debug) > Manage Configurations > generates CMakeSettings.json  
+### To build on Windows (cmake minimum v2.8 with ninja and MSVC/minGW)   
+
+1. In Visual Studio 2017 goto File > Open > CMake > (browse to the dir and select CMakeLists.txt file)   
+2. Keep the same CMakeSettings.json if you wish to keep everything organized under one folder bin/  
+OR  
+2. Configurations(toolbar x64-Debug) > Manage Configurations > generates CMakeSettings.json   
 https://docs.microsoft.com/en-us/cpp/build/customize-cmake-settings?view=vs-2019  
-OR   
-Copy CMakeSettings if you wish to keep everything organized under one folder bin/    
+ 
+    
 
 ### Building on Linux (cmake minimum v2.8 and gcc/clang)    
 Navigate to the cloned repository directory  
