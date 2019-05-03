@@ -1,6 +1,7 @@
 #include <iostream>
+#include <string>
 #include "fraction.h"
-
+#include <typeinfo>
 using namespace std;
 using namespace math_custom;
 using fr = fraction;
@@ -23,16 +24,16 @@ class test_frac{
 public:
     static void addition(){
 
-		fr x = 1.0l + fr(1,2) ;
-		fr a(2, 2);
-        try {
-            a /= fr(0,1);
-            a.simplify();
-        } catch (std::exception& e) {
-            cerr << e.what() << "caught\n";
-        }
+		fr x = 'a' + fr(1,2);
+		//fr a(2, 2);
+  //      try {
+  //          a /= fr(0,1);
+  //          a.simplify();
+  //      } catch (std::exception& e) {
+  //          cerr << e.what() << "caught\n";
+  //      }
 
-        cout << a.simplify() << "\n";
+        cout << x.simplify() << "\n";
 
     }
 
@@ -112,7 +113,6 @@ int main() {
 	//test_frac::gcd();
 	//test_frac::shorthand_and_unary();
 	
-
 	
 	std::cin.get();
     return 0;

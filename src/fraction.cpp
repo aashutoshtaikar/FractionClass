@@ -3,9 +3,7 @@ namespace math_custom {
 	/////////////////
 	//Constructors//
 	///////////////
-	fraction::fraction()noexcept :nr(0), dr(1.0l) {
-		throw std::invalid_argument("coming from noexcept");
-	}
+	fraction::fraction()noexcept:nr(0), dr(1.0l) {}
 
 	fraction::fraction(long double n, long double d)
 	{
@@ -19,19 +17,8 @@ namespace math_custom {
 			d /= 10;
 		}
 
-		int sign = 1;
-		if (d < 0) {
-			sign *= -1;
-			d *= -1;
-		}
-		if (n < 0) {
-			sign *= -1;
-			n *= -1;
-		}
-
-		set_dr(d);
-		set_nr(n*sign);
-
+		set_numerator(n);
+		set_denominator(d);
 	}
 
 	////////////////////////////////
@@ -41,12 +28,12 @@ namespace math_custom {
 	{
 		fraction temp;
 		if (dr == other.dr) {
-			temp.set_nr(nr + other.nr);
-			temp.set_dr(dr);
+			temp.set_numerator(nr + other.nr);
+			temp.set_denominator(dr);
 		}
 		else {
-			temp.set_nr(nr * other.dr + dr * other.nr);
-			temp.set_dr(dr * other.dr);
+			temp.set_numerator(nr * other.dr + dr * other.nr);
+			temp.set_denominator(dr * other.dr);
 		}
 		return temp;
 	}
@@ -55,8 +42,8 @@ namespace math_custom {
 	{
 		fraction temp;
 		if (dr == other.dr) {
-			temp.set_nr(nr - other.nr);
-			temp.set_dr(dr);
+			temp.set_numerator(nr - other.nr);
+			temp.set_denominator(dr);
 		}
 		else {
 			temp.nr = nr * other.dr - dr * other.nr;
@@ -67,15 +54,15 @@ namespace math_custom {
 
 	fraction fraction::operator/(const fraction &other) const {
 		fraction temp;
-		temp.set_nr(nr * other.dr);
-		temp.set_dr(dr * other.nr);
+		temp.set_numerator(nr * other.dr);
+		temp.set_denominator(dr * other.nr);
 		return temp;
 	}
 
 	fraction fraction::operator*(const fraction &other) const {
 		fraction temp;
-		temp.set_nr(nr * other.nr);
-		temp.set_dr(dr * other.dr);
+		temp.set_numerator(nr * other.nr);
+		temp.set_denominator(dr * other.dr);
 		return temp;
 	}
 
@@ -124,7 +111,7 @@ namespace math_custom {
 	}
 
 	fraction& fraction::operator*=(const fraction &other) {
-		*this = *this*other;
+		*this = *this * other;
 		return *this;
 	}
 
@@ -178,23 +165,32 @@ namespace math_custom {
 	/////////////////////
 	//public accessors//
 	///////////////////
-	long double fraction::get_nr() const {
+	long double fraction::get_numerator() const {
 		return nr;
 	}
 
-	long double fraction::get_dr() const {
+	long double fraction::get_denominator() const {
 		return dr;
 	}
 
-	void fraction::set_nr(const long double& n)
+	void fraction::set_numerator(const long double& n)
 	{
 		nr = n;
-		if (nr == 0) set_dr(1);
+		if (nr == 0) dr = 1;
 	}
 
-	void fraction::set_dr(const long double& d)
+	void fraction::set_denominator(const long double& d)
 	{
-		if (d != 0) dr = d;
+		if (d != 0) {
+			if (nr == 0) dr = 1;
+			else {
+				dr = d;	
+				if (d < 0) {
+					dr *= -1;
+					nr *= -1;
+				}
+			}
+		}
 		else {
 			throw std::invalid_argument("demonimator cannot be zero(0)");
 		}
@@ -230,7 +226,7 @@ namespace math_custom {
 	//{
 	//    std::vector<long double> denoms;
 	//    for (auto i : fracs) {
-	//        denoms.push_back(i.get_dr());
+	//        denoms.push_back(i.get_denominator());
 	//    }
 	//}
 
@@ -256,14 +252,15 @@ namespace math_custom {
 	////////////////////////////
 	std::ostream& operator<<(std::ostream &out, const fraction &frac)
 	{
-		if (frac.get_dr() == 1.0l || frac.get_nr() == 0.0l) {
-			out << frac.get_nr();
+		if (frac.get_denominator() == 1.0l || frac.get_numerator() == 0.0l) {
+			out << frac.get_numerator();
 		}
 		else {
-			out << frac.get_nr() << "/" << frac.get_dr();
+			out << frac.get_numerator() << "/" << frac.get_denominator();
 		}
 		return out;
 	}
+
 }
 
 

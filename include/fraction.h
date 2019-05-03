@@ -1,8 +1,10 @@
 #pragma once
-#include<ostream>		// ostream operator<< overload
+#include<iostream>		// ostream operator<< overload
 #include <stdexcept>	//std::invalid_argument()
 #include <cmath>		// fmod()
 #include <vector> 
+#include <string>
+#include <initializer_list>
 
 namespace math_custom {
 	class fraction
@@ -15,11 +17,11 @@ namespace math_custom {
 		//    fraction df;
 
 	public:
-		fraction()noexcept;
+		fraction();
 
 		template <class number_t>
 		fraction(const number_t& n) {
-			*this = fraction(n, 1).get_simplify();
+			*this = fraction(n,1).get_simplify();
 		}
 
 		fraction(long double n, long double d);
@@ -66,10 +68,10 @@ namespace math_custom {
 
 
 		//public accessors
-		long double get_nr()const;
-		long double get_dr()const;
-		void set_nr(const long double& n);
-		void set_dr(const long double& d);
+		long double get_numerator()const;
+		long double get_denominator()const;
+		void set_numerator(const long double& n);
+		void set_denominator(const long double& d);
 
 
 		//defaults for the big 5
