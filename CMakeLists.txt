@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
+add_compile_options(-std=c++17)
+
 #headers
 include_directories(include)
 
@@ -15,7 +17,7 @@ file(GLOB src_files
 add_executable(${PROJECT_NAME} ${src_files} )
 
 #path for generated executables
-install(TARGETS FractionClass DESTINATION /)
+install(TARGETS ${PROJECT_NAME} DESTINATION /)
 
 #to find and link thread libs for the target platform and config
 #find_package (Threads)
