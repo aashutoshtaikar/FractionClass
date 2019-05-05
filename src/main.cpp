@@ -1,7 +1,10 @@
 #include <iostream>
 #include <string>
-#include "fraction.h"
 #include <typeinfo>
+
+#include "fraction.h"
+#include "fraction.ipp"
+
 using namespace std;
 using namespace math_custom;
 using fr = fraction;
@@ -23,20 +26,11 @@ public:
 class test_frac{
 public:
     static void addition(){
-
 		fr x(1,2);
 		x.set_denominator(3);
 		x.set_numerator(-5);
-		//fr a(2, 2);
-  //      try {
-  //          a /= fr(0,1);
-  //          a.simplify();
-  //      } catch (std::exception& e) {
-  //          cerr << e.what() << "caught\n";
-  //      }
 
         cout << x.simplify() << "\n";
-
     }
 
     static void subtraction(){

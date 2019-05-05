@@ -13,9 +13,6 @@ namespace math_custom {
 		long double nr;
 		long double dr;
 
-		//    fraction nf;
-		//    fraction df;
-
 	public:
 		fraction()noexcept;
 
