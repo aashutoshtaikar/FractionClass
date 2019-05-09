@@ -23,7 +23,7 @@ namespace math_custom {
 	////////////////////////////////
 	//fraction operator overloads//
 	//////////////////////////////
-	fraction fraction::operator+(const fraction &other) const
+	/*fraction fraction::operator+(const fraction &other) const
 	{
 		fraction temp;
 		if (dr == other.dr) {
@@ -63,7 +63,7 @@ namespace math_custom {
 		temp.set_numerator(nr * other.nr);
 		temp.set_denominator(dr * other.dr);
 		return temp;
-	}
+	}*/
 
 	fraction& fraction::operator++()
 	{
