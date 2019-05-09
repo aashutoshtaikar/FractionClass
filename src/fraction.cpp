@@ -260,6 +260,62 @@ namespace math_custom {
 		return out;
 	}
 
+
+
+	fraction operator+(const fraction & f1, const fraction & f2)
+	{
+		fraction temp;
+		if (f1.dr == f2.dr) {
+			temp.set_numerator(f1.nr + f2.nr);
+			temp.set_denominator(f1.dr);
+		}
+		else {
+			temp.set_numerator(f1.nr * f2.dr + f1.dr * f2.nr);
+			temp.set_denominator(f1.dr * f2.dr);
+		}
+		return temp;
+	}
+
+	fraction operator-(const fraction & f1, const fraction & f2)
+	{
+		fraction temp;
+		if (f1.dr == f2.dr) {
+			temp.set_numerator(f1.nr - f2.nr);
+			temp.set_denominator(f1.dr);
+		}
+		else {
+			temp.set_numerator(f1.nr * f2.dr - f1.dr * f2.nr);
+			temp.set_denominator(f1.dr * f2.dr);
+		}
+		return temp;
+	}
+
+	fraction operator/(const fraction & f1, const fraction & f2)
+	{
+		fraction temp;
+		temp.set_numerator(f1.nr * f2.dr);
+		temp.set_denominator(f1.dr * f2.nr);
+		return temp;
+	}
+
+	fraction operator*(const fraction & f1, const fraction & f2)
+	{
+		fraction temp;
+		temp.set_numerator(f1.nr * f2.nr);
+		temp.set_denominator(f1.dr * f2.dr);
+		return temp;
+	}
+
+	fraction operator+(const long double & number, const fraction & frac)
+	{
+		return fraction(number, 1) + frac;
+	}
+
+	fraction operator+(const fraction & frac, const long double & number)
+	{
+		return fraction(number, 1) + frac;
+	}
+
 }
 
 

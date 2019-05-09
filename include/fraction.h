@@ -23,11 +23,7 @@ namespace math_custom {
 
 		fraction(long double n, long double d);
 
-		//binary operators
-		fraction operator+(const fraction& other)const;
-		fraction operator-(const fraction& other)const;
-		fraction operator/(const fraction& other)const;
-		fraction operator*(const fraction& other)const;
+
 
 		//unary operators
 		fraction& operator++();
@@ -82,45 +78,44 @@ namespace math_custom {
 	//global overloads
 	std::ostream& operator<<(std::ostream &out, const fraction &frac);
 
+	//binary operators
+	fraction operator+(const fraction& f1, const fraction& f2);
+	fraction operator-(const fraction& f1, const fraction& f2);
+	fraction operator/(const fraction& f1, const fraction& f2);
+	fraction operator*(const fraction& f1, const fraction& f2);
 
-	template<class number_t>
-	fraction operator+(const number_t& number, const fraction& frac) {
-		return fraction(number, 1) + frac;
-	}
+	fraction operator+(const long double& number, const fraction& frac);
 
-	template<class number_t>
-	fraction operator+(const fraction& frac, const number_t& number) {
-		return fraction(number, 1) + frac;
-	}
+	fraction operator+(const fraction& frac, const long double& number);
 
-	template<class number_t>
-	fraction operator-(const number_t& number, const fraction &frac) {
-		return  fraction(number, 1) - frac;
-	}
+	//template<class number_t>
+	//fraction operator-(const number_t& number, const fraction &frac) {
+	//	return  fraction(number, 1) - frac;
+	//}
 
-	template<class number_t>
-	fraction operator-(const fraction &frac, const number_t& number) {
-		return frac - fraction(number, 1);
-	}
+	//template<class number_t>
+	//fraction operator-(const fraction &frac, const number_t& number) {
+	//	return frac - fraction(number, 1);
+	//}
 
-	template<class number_t>
-	fraction operator*(const number_t& number, const fraction &frac) {
-		return fraction(number, 1) * frac;
-	}
+	//template<class number_t>
+	//fraction operator*(const number_t& number, const fraction &frac) {
+	//	return fraction(number, 1) * frac;
+	//}
 
-	template<class number_t>
-	fraction operator*(const fraction &frac, const number_t& number) {
-		return fraction(number, 1) * frac;
-	}
+	//template<class number_t>
+	//fraction operator*(const fraction &frac, const number_t& number) {
+	//	return fraction(number, 1) * frac;
+	//}
 
-	template<class number_t>
-	fraction operator/(const number_t& number, const fraction &frac) {
-		return fraction(number, 1) / frac;
-	}
+	//template<class number_t>
+	//fraction operator/(const number_t& number, const fraction &frac) {
+	//	return fraction(number, 1) / frac;
+	//}
 
-	template<class number_t>
-	fraction operator/(const fraction &frac, const number_t& number) {
-		return frac / fraction(number, 1);
-	}
+	//template<class number_t>
+	//fraction operator/(const fraction &frac, const number_t& number) {
+	//	return frac / fraction(number, 1);
+	//}
 
 }

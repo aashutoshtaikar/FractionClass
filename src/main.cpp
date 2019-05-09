@@ -3,7 +3,6 @@
 #include <typeinfo>
 
 #include "fraction.h"
-#include "fraction.ipp"
 
 using namespace std;
 using namespace math_custom;
@@ -26,9 +25,10 @@ public:
 class test_frac{
 public:
     static void addition(){
-		fr x(1,2);
-		x.set_denominator(3);
-		x.set_numerator(-5);
+		//fr x(1,2);
+		//x.set_denominator(3);
+		//x.set_numerator(-5);
+		fr x = 1 + fr(1, 2);
 
         cout << x.simplify() << "\n";
     }
