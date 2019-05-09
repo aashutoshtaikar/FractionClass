@@ -14,7 +14,6 @@ namespace math_custom {
 		long double dr;
 
 	public:
-		fraction()noexcept;
 
 		//template <class number_t>
 		//fraction(const number_t& n) {
@@ -23,7 +22,6 @@ namespace math_custom {
 
 		fraction(long double n, long double d);
 
-		fraction operator+(const fraction& other) = delete;
 
 
 		//unary operators
@@ -81,13 +79,14 @@ namespace math_custom {
 
 	//binary operators
 	fraction operator+(const fraction& f1, const fraction& f2);
-	//fraction operator-(const fraction& f1, const fraction& f2);
-	//fraction operator/(const fraction& f1, const fraction& f2);
-	//fraction operator*(const fraction& f1, const fraction& f2);
+	fraction operator-(const fraction& f1, const fraction& f2);
+	fraction operator/(const fraction& f1, const fraction& f2);
+	fraction operator*(const fraction& f1, const fraction& f2);
 
 	fraction operator+(const long double& number, const fraction& frac);
 
 	fraction operator+(const fraction& frac, const long double& number);
+
 
 	//template<class number_t>
 	//fraction operator-(const number_t& number, const fraction &frac) {

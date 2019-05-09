@@ -2,9 +2,8 @@
 
 namespace math_custom {
 
-	fraction::fraction()noexcept:nr(0), dr(1.0l) {}
 
-	fraction::fraction(long double n, long double d)
+	fraction::fraction(long double n = 0, long double d = 1)
 	{
 		while (fmod(n, 10) != 0 && fmod(d, 10) != 0) {
 			n *= 10;
@@ -306,12 +305,12 @@ namespace math_custom {
 		return temp;
 	}
 
-	fraction operator+(const long double & number, const fraction & frac)
+	fraction operator+(const long double& number, const fraction & frac)
 	{
 		return fraction(number, 1) + frac;
 	}
 
-	fraction operator+(const fraction & frac, const long double & number)
+	fraction operator+(const fraction& frac, const long double& number)
 	{
 		return fraction(number, 1) + frac;
 	}
