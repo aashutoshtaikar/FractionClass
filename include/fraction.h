@@ -14,14 +14,13 @@ namespace math_custom {
 		long double dr;
 
 	public:
-		fraction()noexcept;
 
 		template <class number_t>
 		fraction(const number_t& n) {
 			*this = fraction(n,1).get_simplify();
 		}
 
-		fraction(long double n, long double d);
+		fraction(long double n = 0, long double d = 1);
 
 		//binary operators
 		fraction operator+(const fraction& other)const;

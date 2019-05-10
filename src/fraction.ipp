@@ -2,8 +2,6 @@
 
 namespace math_custom {
 
-	fraction::fraction()noexcept:nr(0), dr(1.0l) {}
-
 	fraction::fraction(long double n, long double d)
 	{
 		while (fmod(n, 10) != 0 && fmod(d, 10) != 0) {
@@ -20,9 +18,8 @@ namespace math_custom {
 		set_denominator(d);
 	}
 
-	////////////////////////////////
+
 	//fraction operator overloads//
-	//////////////////////////////
 	fraction fraction::operator+(const fraction &other) const
 	{
 		fraction temp;
@@ -91,9 +88,7 @@ namespace math_custom {
 		return temp;
 	}
 
-	///////////////////////////////////////////
 	//fraction operator assignment overloads//
-	/////////////////////////////////////////
 	fraction& fraction::operator+=(const fraction &other) {
 		*this = *this + other;
 		return *this;
@@ -114,9 +109,7 @@ namespace math_custom {
 		return *this;
 	}
 
-	/////////////////////////
 	//relational operators//
-	///////////////////////
 	bool fraction::operator>(const fraction &other) const
 	{
 		return ((double)this->get_simplify() > (double)other.get_simplify());
@@ -145,9 +138,7 @@ namespace math_custom {
 		return ((double)this->get_simplify() != (double)other.get_simplify());
 	}
 
-	///////////////////
 	//cast operators//
-	/////////////////
 	fraction::operator double() {
 		return static_cast<double>(nr / dr);
 	}
@@ -160,10 +151,7 @@ namespace math_custom {
 		return static_cast<int>(nr / dr);
 	}
 
-
-	/////////////////////
 	//public accessors//
-	///////////////////
 	long double fraction::get_numerator() const {
 		return nr;
 	}
@@ -195,10 +183,7 @@ namespace math_custom {
 		}
 	}
 
-
-	//////////////
 	//functions//
-	////////////
 	fraction fraction::get_reciprocal()const {
 		return (fraction(dr, nr));
 	}
@@ -246,9 +231,7 @@ namespace math_custom {
 		return *this;
 	}
 
-	//////////////////////////////
 	//global operator overloads//
-	////////////////////////////
 	std::ostream& operator<<(std::ostream &out, const fraction &frac)
 	{
 		if (frac.get_denominator() == 1.0l || frac.get_numerator() == 0.0l) {
