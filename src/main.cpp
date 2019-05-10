@@ -26,15 +26,16 @@ class test_frac{
 public:
     static void addition(){
 		//fr x(1,2);
-		//x.set_denominator(3);
-		//x.set_numerator(-5);
+		//x.denominator(3);
+		//x.numerator(-5);
+		
 		fr x = 1 + fr(1, 2);
 
         cout << x.simplify() << "\n";
     }
 
     static void subtraction(){
-        fr x = 0 - fr(1,2);
+        fr x = 0 - fr(1,2) - 1;
         cout << x << "\n";
     }
 

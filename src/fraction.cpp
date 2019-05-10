@@ -2,8 +2,7 @@
 
 namespace math_custom {
 
-
-	fraction::fraction(long double n = 0, long double d = 1)
+	fraction::fraction(long double n, long double d)
 	{
 		while (fmod(n, 10) != 0 && fmod(d, 10) != 0) {
 			n *= 10;
@@ -15,55 +14,11 @@ namespace math_custom {
 			d /= 10;
 		}
 
-		set_numerator(n);
-		set_denominator(d);
+		numerator(n);
+		denominator(d);
 	}
 
-	////////////////////////////////
-	//fraction operator overloads//
-	//////////////////////////////
-	/*fraction fraction::operator+(const fraction &other) const
-	{
-		fraction temp;
-		if (dr == other.dr) {
-			temp.set_numerator(nr + other.nr);
-			temp.set_denominator(dr);
-		}
-		else {
-			temp.set_numerator(nr * other.dr + dr * other.nr);
-			temp.set_denominator(dr * other.dr);
-		}
-		return temp;
-	}
-
-	fraction fraction::operator-(const fraction &other) const
-	{
-		fraction temp;
-		if (dr == other.dr) {
-			temp.set_numerator(nr - other.nr);
-			temp.set_denominator(dr);
-		}
-		else {
-			temp.nr = nr * other.dr - dr * other.nr;
-			temp.dr = dr * other.dr;
-		}
-		return temp;
-	}
-
-	fraction fraction::operator/(const fraction &other) const {
-		fraction temp;
-		temp.set_numerator(nr * other.dr);
-		temp.set_denominator(dr * other.nr);
-		return temp;
-	}
-
-	fraction fraction::operator*(const fraction &other) const {
-		fraction temp;
-		temp.set_numerator(nr * other.nr);
-		temp.set_denominator(dr * other.dr);
-		return temp;
-	}*/
-
+	//unary operator overloads
 	fraction& fraction::operator++()
 	{
 		*this += 1;
@@ -90,9 +45,7 @@ namespace math_custom {
 		return temp;
 	}
 
-	///////////////////////////////////////////
 	//fraction operator assignment overloads//
-	/////////////////////////////////////////
 	fraction& fraction::operator+=(const fraction &other) {
 		*this = *this + other;
 		return *this;
@@ -113,9 +66,7 @@ namespace math_custom {
 		return *this;
 	}
 
-	/////////////////////////
 	//relational operators//
-	///////////////////////
 	bool fraction::operator>(const fraction &other) const
 	{
 		return ((double)this->get_simplify() > (double)other.get_simplify());
@@ -144,9 +95,7 @@ namespace math_custom {
 		return ((double)this->get_simplify() != (double)other.get_simplify());
 	}
 
-	///////////////////
 	//cast operators//
-	/////////////////
 	fraction::operator double() {
 		return static_cast<double>(nr / dr);
 	}
@@ -159,25 +108,22 @@ namespace math_custom {
 		return static_cast<int>(nr / dr);
 	}
 
-
-	/////////////////////
 	//public accessors//
-	///////////////////
-	long double fraction::get_numerator() const {
+	long double fraction::numerator() const {
 		return nr;
 	}
 
-	long double fraction::get_denominator() const {
+	long double fraction::denominator() const {
 		return dr;
 	}
 
-	void fraction::set_numerator(const long double& n)
+	void fraction::numerator(const long double& n)
 	{
 		nr = n;
 		if (nr == 0) dr = 1;
 	}
 
-	void fraction::set_denominator(const long double& d)
+	void fraction::denominator(const long double& d)
 	{
 		if (d != 0) {
 			if (nr == 0) dr = 1;
@@ -194,10 +140,7 @@ namespace math_custom {
 		}
 	}
 
-
-	//////////////
 	//functions//
-	////////////
 	fraction fraction::get_reciprocal()const {
 		return (fraction(dr, nr));
 	}
@@ -224,7 +167,7 @@ namespace math_custom {
 	//{
 	//    std::vector<long double> denoms;
 	//    for (auto i : fracs) {
-	//        denoms.push_back(i.get_denominator());
+	//        denoms.push_back(i.denominator());
 	//    }
 	//}
 
@@ -245,16 +188,14 @@ namespace math_custom {
 		return *this;
 	}
 
-	//////////////////////////////
 	//global operator overloads//
-	////////////////////////////
 	std::ostream& operator<<(std::ostream &out, const fraction &frac)
 	{
-		if (frac.get_denominator() == 1.0l || frac.get_numerator() == 0.0l) {
-			out << frac.get_numerator();
+		if (frac.denominator() == 1.0l || frac.numerator() == 0.0l) {
+			out << frac.numerator();
 		}
 		else {
-			out << frac.get_numerator() << "/" << frac.get_denominator();
+			out << frac.numerator() << "/" << frac.denominator();
 		}
 		return out;
 	}
@@ -264,13 +205,13 @@ namespace math_custom {
 	fraction operator+(const fraction & f1, const fraction & f2)
 	{
 		fraction temp;
-		if (f1.dr == f2.dr) {
-			temp.set_numerator(f1.nr + f2.nr);
-			temp.set_denominator(f1.dr);
+		if (f1.denominator() == f2.denominator()) {
+			temp.numerator(f1.numerator() + f2.numerator());
+			temp.denominator(f1.denominator());
 		}
 		else {
-			temp.set_numerator(f1.nr * f2.dr + f1.dr * f2.nr);
-			temp.set_denominator(f1.dr * f2.dr);
+			temp.numerator(f1.numerator() * f2.denominator() + f1.denominator() * f2.numerator());
+			temp.denominator(f1.denominator() * f2.denominator());
 		}
 		return temp;
 	}
@@ -278,13 +219,13 @@ namespace math_custom {
 	fraction operator-(const fraction & f1, const fraction & f2)
 	{
 		fraction temp;
-		if (f1.dr == f2.dr) {
-			temp.set_numerator(f1.nr - f2.nr);
-			temp.set_denominator(f1.dr);
+		if (f1.denominator() == f2.denominator()) {
+			temp.numerator(f1.numerator() - f2.numerator());
+			temp.denominator(f1.denominator());
 		}
 		else {
-			temp.set_numerator(f1.nr * f2.dr - f1.dr * f2.nr);
-			temp.set_denominator(f1.dr * f2.dr);
+			temp.numerator(f1.numerator() * f2.denominator() - f1.denominator() * f2.numerator());
+			temp.denominator(f1.denominator() * f2.denominator());
 		}
 		return temp;
 	}
@@ -292,16 +233,16 @@ namespace math_custom {
 	fraction operator/(const fraction & f1, const fraction & f2)
 	{
 		fraction temp;
-		temp.set_numerator(f1.nr * f2.dr);
-		temp.set_denominator(f1.dr * f2.nr);
+		temp.numerator(f1.numerator() * f2.denominator());
+		temp.denominator(f1.denominator() * f2.numerator());
 		return temp;
 	}
 
 	fraction operator*(const fraction & f1, const fraction & f2)
 	{
 		fraction temp;
-		temp.set_numerator(f1.nr * f2.nr);
-		temp.set_denominator(f1.dr * f2.dr);
+		temp.numerator(f1.numerator() * f2.numerator());
+		temp.denominator(f1.denominator() * f2.denominator());
 		return temp;
 	}
 
@@ -313,6 +254,11 @@ namespace math_custom {
 	fraction operator+(const fraction& frac, const long double& number)
 	{
 		return fraction(number, 1) + frac;
+	}
+
+	fraction operator-(const long double & number, const fraction & frac)
+	{
+		return  fraction(number, 1) - frac;
 	}
 
 }

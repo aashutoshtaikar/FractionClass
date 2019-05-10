@@ -9,20 +9,12 @@
 namespace math_custom {
 	class fraction
 	{
-	public:
+	private:
 		long double nr;
 		long double dr;
 
 	public:
-
-		//template <class number_t>
-		//fraction(const number_t& n) {
-		//	*this = fraction(n,1).get_simplify();
-		//}
-
-		fraction(long double n, long double d);
-
-
+		fraction(long double n = 0, long double d = 1);
 
 		//unary operators
 		fraction& operator++();
@@ -45,25 +37,24 @@ namespace math_custom {
 		bool operator!=(const fraction& other)const;
 
 		//casting operators
-		operator int();
-		operator float();
-		operator double();
+		explicit operator int();
+		explicit operator float();
+		explicit operator double();
 
 		//functions
 		fraction get_reciprocal()const;
 		void reciprocal();
 		static long double gcd(const long double& x, const long double& y);
 
-		//    static long double lcm(std::initializer_list<fraction> fracs);
+		//static long double lcm(std::initializer_list<fraction> fracs);
 		fraction get_simplify()const;
 		const fraction& simplify();
 
-
 		//public accessors
-		long double get_numerator()const;
-		long double get_denominator()const;
-		void set_numerator(const long double& n);
-		void set_denominator(const long double& d);
+		long double numerator()const;
+		long double denominator()const;
+		void numerator(const long double& n);
+		void denominator(const long double& d);
 
 
 		//defaults for the big 5
@@ -77,45 +68,8 @@ namespace math_custom {
 	//global overloads
 	std::ostream& operator<<(std::ostream &out, const fraction &frac);
 
-	//binary operators
 	fraction operator+(const fraction& f1, const fraction& f2);
 	fraction operator-(const fraction& f1, const fraction& f2);
 	fraction operator/(const fraction& f1, const fraction& f2);
 	fraction operator*(const fraction& f1, const fraction& f2);
-
-	fraction operator+(const long double& number, const fraction& frac);
-
-	fraction operator+(const fraction& frac, const long double& number);
-
-
-	//template<class number_t>
-	//fraction operator-(const number_t& number, const fraction &frac) {
-	//	return  fraction(number, 1) - frac;
-	//}
-
-	//template<class number_t>
-	//fraction operator-(const fraction &frac, const number_t& number) {
-	//	return frac - fraction(number, 1);
-	//}
-
-	//template<class number_t>
-	//fraction operator*(const number_t& number, const fraction &frac) {
-	//	return fraction(number, 1) * frac;
-	//}
-
-	//template<class number_t>
-	//fraction operator*(const fraction &frac, const number_t& number) {
-	//	return fraction(number, 1) * frac;
-	//}
-
-	//template<class number_t>
-	//fraction operator/(const number_t& number, const fraction &frac) {
-	//	return fraction(number, 1) / frac;
-	//}
-
-	//template<class number_t>
-	//fraction operator/(const fraction &frac, const number_t& number) {
-	//	return frac / fraction(number, 1);
-	//}
-
 }
